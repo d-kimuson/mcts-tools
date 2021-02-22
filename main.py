@@ -58,7 +58,7 @@ def convert_for_csharp() -> None:
 if __name__ == '__main__':
     if (len(sys.argv) <= 1):
         raise RuntimeError(
-            'use like: python main.py [method: export_path_list, etc]'
+            'example: python main.py [method: path_list | extract | csharp | build]'
         )
 
     method = sys.argv[1]
@@ -73,5 +73,5 @@ if __name__ == '__main__':
         convert_for_csharp()
     else:
         raise RuntimeError(
-            'use like: python main.py [method: export_path_list, etc]'
+            'example: python main.py [method: path_list | extract | csharp | build]'
         )
