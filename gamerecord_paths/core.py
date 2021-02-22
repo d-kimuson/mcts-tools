@@ -4,10 +4,13 @@ from datetime import datetime
 from pytz import utc
 
 
-def parse_date(filename: str):
+def parse_date(filename: str) -> datetime:
     # TODO: should handle exception
     parsed_str = filename.split("UTC_")[1].split("_file")[0].replace("_", "-")
-    return datetime(*[int(_) for _ in parsed_str.split("-")], tzinfo=utc)
+    year, month, day, hour, minute, second = [
+        int(_) for _ in parsed_str.split("-")
+    ]
+    return datetime(year=year, month=month, day=day, hour=hour, minute=minute, second=second, tzinfo=utc)
 
 
 def is_valid(filename: str) -> bool:
@@ -31,5 +34,5 @@ def get_paths_dict(base_path: Path) -> dict:
     return paths
 
 
-def get_paths_list(base_path: Path) -> dict:
-    return list(chain(*[path for path in get_paths_dict(base_path).values()]))
+def get_paths_list(base_path: Path) -> list:
+    return [{"path": path} for path in list(chain(*[path for path in get_paths_dict(base_path).values()]))]
