@@ -11,6 +11,7 @@ check = "mypy"
 python = "^3.8"
 python-dotenv = "^0.15.0"
 icecream = "^2.1.0"
+pytz = "^2021.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
